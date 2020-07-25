@@ -1,0 +1,17 @@
+@import '../../Sass/_colors';
+@import '../../Sass/mixins';
+
+.logo-brand-text-footer {
+  font-size: 1rem;
+}
+.logo {
+  width: 30px;
+  height: 30px;
+  margin-right: 0.2rem;
+  padding: 0.1rem;
+}
+.footer {
+  @include flexCenter($justify: true, $align: true);
+  border-top: 1px solid $colorCCC;
+  color: $linkColor;
+}

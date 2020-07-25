@@ -1,0 +1,25 @@
+@mixin flexCenter($justify: false, $align: false) {
+  display: flex;
+  @if $justify {
+    justify-content: center;
+  }
+  @if $align {
+    align-items: center;
+  }
+}
+
+@mixin flex($justify, $align) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+@mixin paddingHorisontal($left, $right) {
+  padding-left: $left;
+  padding-right: $right;
+}
+
+@mixin paddingVertical($top, $bottom) {
+  padding-top: $top;
+  padding-bottom: $bottom;
+}

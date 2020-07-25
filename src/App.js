@@ -1,21 +1,14 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
 import './App.css'
-import { Text } from './UI/Text/Text'
+import Footer from './Layout/Footer/Footer'
+import Header from './Layout/Header/Header'
 
-function App() {
-  const title = useSelector((state) => state.global.title)
-  return (
-    <>
-      <div>
-        <p>
-          <span>
-            <Text spreadText="This is" text={title} />
-          </span>
-        </p>
-      </div>
-    </>
-  )
-}
+const App = () => (
+  <>
+    <Header />
+
+    <Footer />
+  </>
+)
 
 export default App
