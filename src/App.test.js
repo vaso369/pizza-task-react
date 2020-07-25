@@ -1,4 +1,4 @@
-test('result 4', () => {
+it('should ...', async () => {
   const result = 2 + 2
   expect(result).toEqual(4)
 })
