@@ -1,13 +1,11 @@
 import { applyMiddleware, combineReducers, compose, createStore } from 'redux'
 import thunk from 'redux-thunk'
-import globalReducer from '../Reducers/global'
+import { productListReducer } from '../Reducers/ProductReducer'
 
-const initialState = {
-  global: 'Title',
-}
+const initialState = {} /* eslint-disable */
 
 const reducer = combineReducers({
-  global: globalReducer,
+  productList: productListReducer,
 })
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
