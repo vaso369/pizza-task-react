@@ -12,10 +12,10 @@ import './HomePage.scss'
 const HomePage = () => {
   const dispatch = useDispatch()
   const productList = useSelector((state) => state.productList)
-  const { products, loading, error, allDocs, limit, currency } = productList
+  const { products, loading, error, allDocs, limit, currency, search, page } = productList
 
   useEffect(() => {
-    dispatch(listProducts(1))
+    dispatch(listProducts())
   }, [dispatch])
 
   return loading ? (
@@ -32,22 +32,33 @@ const HomePage = () => {
   ) : (
     <>
       <div className="products-div d-flex flex-column justify-content-around ml-auto">
-        <Search dispatch={listProducts} />
-        <div
-          className="d-flex align-items-center justify-content-between mt-1"
-          style={{
-            width: '30%',
-            alignSelf: 'center',
-          }}
-        >
-          <Currency dispatch={listProducts} />
-          <PerPage dispatch={listProducts} />
+        <Search dispatch={listProducts} perPage={Number(limit)} currency={currency} />
+        <div className="products-div--filter-wrapper d-flex align-items-center justify-content-between mt-1">
+          <Currency
+            dispatch={listProducts}
+            perPage={Number(limit)}
+            search={search}
+            currency={currency}
+            page={page}
+          />
+          <PerPage
+            dispatch={listProducts}
+            perPage={Number(limit)}
+            search={search}
+            currency={currency}
+          />
         </div>
         <div className="home d-flex flex-wrap justify-content-around">
           <Card products={products} currency={currency} />
         </div>
         <div className="mx-auto mt-5 paginate-bottom">
-          <Pagination dispatch={listProducts} pageCount={allDocs} perPage={Number(limit)} />
+          <Pagination
+            dispatch={listProducts}
+            pageCount={allDocs}
+            perPage={Number(limit)}
+            search={search}
+            currency={currency}
+          />
         </div>
       </div>
     </>
