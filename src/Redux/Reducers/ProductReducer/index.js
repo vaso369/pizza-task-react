@@ -1,8 +1,6 @@
 import {
   PRODUCT_LIST_FAIL,
   PRODUCT_LIST_REQUEST,
-  PRODUCT_LIST_SEARCH,
-  PRODUCT_LIST_SELECTED,
   PRODUCT_LIST_SUCCESS,
   PRODUCT_SET_CURRENCY,
   PRODUCT_SET_LIMIT,
@@ -16,7 +14,6 @@ function productListReducer(
     next: {},
     allDocs: 0,
     search: '',
-    selected: 0,
     currency: 'eur',
     page: 1,
   },
@@ -44,16 +41,7 @@ function productListReducer(
         loading: false,
         error: action.payload,
       }
-    case PRODUCT_LIST_SEARCH:
-      return {
-        ...state,
-        search: action.payload,
-      }
-    case PRODUCT_LIST_SELECTED:
-      return {
-        ...state,
-        selected: action.payload,
-      }
+
     case PRODUCT_SET_LIMIT:
       return {
         ...state,

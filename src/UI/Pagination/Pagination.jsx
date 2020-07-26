@@ -12,9 +12,10 @@ export default function Pagination(props) {
   const items = []
   const pages = Math.ceil(pageCount / perPage)
   const currency = useSelector((state) => state.productList.currency)
+  const search = useSelector((state) => state.productList.search)
 
   const pageClick = (e) => {
-    dispatch(props.dispatch(e.target.value, perPage, '', currency))
+    dispatch(props.dispatch(e.target.value, perPage, search, currency))
     dispatch(setPage(e.target.value))
     setActive(Number(e.target.value))
   }
