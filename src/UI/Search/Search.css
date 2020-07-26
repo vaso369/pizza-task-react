@@ -1,0 +1,13 @@
+.formGroup {
+  position: relative;
+  width: 30%; }
+
+@media screen and (max-width: 600px) {
+  .formGroup {
+    width: 80%; } }
+
+.formGroup .inputForm {
+  width: 100%; }
+
+.form {
+  justify-content: center; }
