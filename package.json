@@ -1,5 +1,6 @@
 {
   "name": "react-starter",
+  "proxy": "http://localhost:8000",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -32,7 +33,7 @@
     "build": "react-scripts build",
     "eject": "react-scripts eject",
     "lint": "eslint src",
-    "pretty": "prettier --semi false --print-width 100 --single-quote --trailing-comma all --write \"src/**/*.js\"",
+    "pretty": "prettier --semi false --print-width 100 --single-quote --trailing-comma all --prose-wrap never --write \"src/**/*.js\"",
     "precommit": "lint-staged && npm run test",
     "test:unit": "jest",
     "test": "npm run lint  && jest",

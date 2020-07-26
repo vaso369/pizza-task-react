@@ -4,16 +4,9 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 import { HashRouter } from 'react-router-dom'
-import { combineReducers, createStore } from 'redux'
 import App from './App'
 import './index.css'
-import globalReducer from './Redux/Reducers/global'
-
-const rootReducer = combineReducers({
-  global: globalReducer,
-})
-
-const store = createStore(rootReducer)
+import store from './Redux/Store/Store'
 
 ReactDOM.render(
   <React.StrictMode>

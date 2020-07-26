@@ -1,0 +1,15 @@
+.logo-brand-text-footer {
+  font-size: 1rem; }
+
+.logo {
+  width: 30px;
+  height: 30px;
+  margin-right: 0.2rem;
+  padding: 0.1rem; }
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid #ccc;
+  color: rgba(255, 255, 255, 0.5); }

@@ -1,21 +1,18 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { Route, Switch } from 'react-router-dom'
 import './App.css'
-import { Text } from './UI/Text/Text'
+import Footer from './Layout/Footer/Footer'
+import Header from './Layout/Header/Header'
+import HomePage from './Pages/HomePage/HomePage'
 
-function App() {
-  const title = useSelector((state) => state.global.title)
-  return (
-    <>
-      <div>
-        <p>
-          <span>
-            <Text spreadText="This is" text={title} />
-          </span>
-        </p>
-      </div>
-    </>
-  )
-}
+const App = () => (
+  <>
+    <Header />
+    <Switch>
+      <Route exact path="/" component={HomePage} />
+    </Switch>
+    <Footer />
+  </>
+)
 
 export default App
