@@ -28,7 +28,7 @@
     flex-basis: 100%;
     // padding-left: 4rem;
     // padding-right: 4rem;
-    @include paddingHorisontal(4rem, 4rem);
+    @include paddingHorisontal(2.3rem, 2.3rem);
   }
   @media screen and (min-width: 601px) and (max-width: 1024px) {
     flex-basis: 50%;
@@ -63,6 +63,13 @@
   }
   @media screen and (max-width: 600px) {
   }
+  &--filter-wrapper {
+    width: 30%;
+    align-self: center;
+    @media screen and (max-width: 600px) {
+      width: 80%;
+    }
+  }
 }
 
 .pagination a:focus {
@@ -83,18 +90,6 @@
 
 .active-page {
   border: 1px solid $colorDarkGray;
-}
-
-.formGroup {
-  position: relative;
-  width: 30%;
-  .inputForm {
-    width: 100%;
-  }
-}
-
-.form {
-  justify-content: center;
 }
 
 .selectList {

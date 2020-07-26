@@ -21,8 +21,8 @@
 @media screen and (max-width: 600px) {
   .product-card {
     flex-basis: 100%;
-    padding-left: 4rem;
-    padding-right: 4rem; } }
+    padding-left: 2.3rem;
+    padding-right: 2.3rem; } }
 
 @media screen and (min-width: 601px) and (max-width: 1024px) {
   .product-card {
@@ -54,6 +54,14 @@
     flex-basis: 100%;
     margin-bottom: 0; } }
 
+.products-div--filter-wrapper {
+  width: 30%;
+  align-self: center; }
+
+@media screen and (max-width: 600px) {
+  .products-div--filter-wrapper {
+    width: 80%; } }
+
 .pagination a:focus {
   outline: none; }
 
@@ -69,16 +77,6 @@
 
 .active-page {
   border: 1px solid #333; }
-
-.formGroup {
-  position: relative;
-  width: 30%; }
-
-.formGroup .inputForm {
-  width: 100%; }
-
-.form {
-  justify-content: center; }
 
 .selectList {
   width: 5rem;

@@ -1,24 +1,13 @@
 import PropTypes from 'prop-types'
 import React from 'react'
-import {
-  Form,
-} from 'react-bootstrap'
-import {
-  useDispatch, useSelector,
-} from 'react-redux'
-import {
-  setCurrency,
-} from '../../Redux/Actions/ProductActions/ProductActions'
+import { Form } from 'react-bootstrap'
+import { useDispatch } from 'react-redux'
+import { setCurrency } from '../../Redux/Actions/ProductActions/ProductActions'
 import './Currency.scss'
 
 export const Currency = (props) => {
+  const { page, perPage, search, currency } = props
   const dispatch = useDispatch()
-
-  const currency = useSelector((state) => state.productList.currency)
-  const page = useSelector((state) => state.productList.page)
-  const search = useSelector((state) => state.productList.search)
-
-  const perPage = Number(useSelector((state) => state.productList.limit))
 
   const getByCurrency = (e) => {
     dispatch(props.dispatch(Number(page), perPage, search, e))
@@ -41,5 +30,9 @@ export const Currency = (props) => {
   )
 }
 Currency.propTypes = {
+  perPage: PropTypes.number.isRequired,
+  search: PropTypes.string.isRequired,
+  currency: PropTypes.string.isRequired,
+  page: PropTypes.string.isRequired,
   dispatch: PropTypes.func.isRequired,
 }

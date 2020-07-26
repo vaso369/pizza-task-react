@@ -1,17 +1,13 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 import { Form } from 'react-bootstrap'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { setLimit, setPage } from '../../Redux/Actions/ProductActions/ProductActions'
 import './PerPage.scss'
 
 export const PerPage = (props) => {
   const dispatch = useDispatch()
-
-  const perPage = Number(useSelector((state) => state.productList.limit))
-
-  const currency = useSelector((state) => state.productList.currency)
-  const search = useSelector((state) => state.productList.search)
+  const { perPage, search, currency } = props
 
   const getPerPage = (e) => {
     dispatch(props.dispatch(1, e, search, currency))
@@ -36,5 +32,8 @@ export const PerPage = (props) => {
   )
 }
 PerPage.propTypes = {
+  perPage: PropTypes.number.isRequired,
+  search: PropTypes.string.isRequired,
+  currency: PropTypes.string.isRequired,
   dispatch: PropTypes.func.isRequired,
 }

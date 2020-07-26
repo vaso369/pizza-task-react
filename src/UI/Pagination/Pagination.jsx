@@ -1,20 +1,19 @@
 import PropTypes from 'prop-types'
 import React, { useEffect, useState } from 'react'
 import { Button } from 'react-bootstrap'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { setPage } from '../../Redux/Actions/ProductActions/ProductActions'
 
 export default function Pagination(props) {
   const dispatch = useDispatch()
-  const { pageCount, perPage } = props
+  const { pageCount, perPage, search, currency } = props
   const [pagesNext, setPagesNext] = useState(4)
   const [active, setActive] = useState(1)
   const items = []
   const pages = Math.ceil(pageCount / perPage)
-  const currency = useSelector((state) => state.productList.currency)
 
   const pageClick = (e) => {
-    dispatch(props.dispatch(e.target.value, perPage, '', currency))
+    dispatch(props.dispatch(e.target.value, perPage, search, currency))
     dispatch(setPage(e.target.value))
     setActive(Number(e.target.value))
   }
@@ -102,5 +101,7 @@ export default function Pagination(props) {
 Pagination.propTypes = {
   pageCount: PropTypes.number.isRequired,
   perPage: PropTypes.number.isRequired,
+  search: PropTypes.string.isRequired,
+  currency: PropTypes.string.isRequired,
   dispatch: PropTypes.func.isRequired,
 }

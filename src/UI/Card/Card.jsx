@@ -4,6 +4,7 @@ import React from 'react'
 import { Button, Card, CardDeck } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { ingredientString } from '../../Utilities/IngredientString'
+import './Card.scss'
 
 const CardComponent = ({ products, currency }) => products.map((el) => (
   <CardDeck className="product-card" key={el.name + Math.random()}>
@@ -25,9 +26,9 @@ const CardComponent = ({ products, currency }) => products.map((el) => (
           <b>{el.name}</b>
         </Card.Title>
         <Card.Text>{ingredientString(el.ingredients)}</Card.Text>
-        <div className="d-flex justify-content-between text-center">
+        <div className="card-summary d-flex justify-content-between text-center">
           {el.sizes.map((s) => (
-            <div className="d-flex flex-column " key={s.size}>
+            <div className="d-flex flex-column card-summary--responsive" key={s.size}>
               <Card.Text>Size: {s.size}</Card.Text>
               <Card.Text>
                 Price: <FontAwesomeIcon icon={currency === 'eur' ? faEuroSign : faDollarSign} />{' '}
