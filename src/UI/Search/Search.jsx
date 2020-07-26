@@ -3,11 +3,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import PropTypes from 'prop-types'
 import React, { useEffect, useState } from 'react'
 import { Form, FormControl, FormGroup } from 'react-bootstrap'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { setSearch } from '../../Redux/Actions/ProductActions/ProductActions'
 import './Search.scss'
 
 export const Search = (props) => {
+  const { perPage, currency } = props
   const dispatch = useDispatch()
 
   const [innerWidth, setInnerWidth] = useState(false)
@@ -17,14 +18,9 @@ export const Search = (props) => {
     }
   }, [innerWidth])
 
-  const currency = useSelector((state) => state.productList.currency)
-  const perPage = Number(useSelector((state) => state.productList.limit))
-
   const getBySearch = (e) => {
     dispatch(props.dispatch(1, perPage, e, currency))
     dispatch(setSearch(e))
-
-    // setCurrency(e)
   }
 
   const style = innerWidth
@@ -67,5 +63,7 @@ export const Search = (props) => {
   )
 }
 Search.propTypes = {
+  perPage: PropTypes.number.isRequired,
+  currency: PropTypes.string.isRequired,
   dispatch: PropTypes.func.isRequired,
 }
