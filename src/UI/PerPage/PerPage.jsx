@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import { Form } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
-import { setLimit } from '../../Redux/Actions/ProductActions/ProductActions'
+import { setLimit, setPage } from '../../Redux/Actions/ProductActions/ProductActions'
 import './PerPage.scss'
 
 export const PerPage = (props) => {
@@ -16,6 +16,7 @@ export const PerPage = (props) => {
   const getPerPage = (e) => {
     dispatch(props.dispatch(1, e, search, currency))
     dispatch(setLimit(e))
+    dispatch(setPage(1))
   }
 
   return (
