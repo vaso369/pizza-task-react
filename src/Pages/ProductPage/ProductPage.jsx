@@ -39,7 +39,7 @@ const ProductPage = (props) => {
   }, [dispatch, match.params.id])
 
   const handleAddToCart = (id) => {
-    const productInCart = cart.find((el) => el.product === id && el.sizeId === size)
+    const productInCart = cart.find((el) => el.id === id && el.sizeId === size)
     if (productInCart) {
       const productInCartQuantity = productInCart.qty
       if (productInCartQuantity + quantity > 5) {
