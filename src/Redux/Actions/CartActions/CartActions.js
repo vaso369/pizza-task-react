@@ -1,6 +1,10 @@
 import axios from 'axios'
 import Cookie from 'js-cookie'
-import { CART_ADD_ITEM } from '../../ActionTypes/CartTypes/CartTypes'
+import {
+  CART_ADD_ITEM,
+  CART_REMOVE_ITEM,
+  UPDATE_CART_ITEM,
+} from '../../ActionTypes/CartTypes/CartTypes'
 
 const addToCart = (productId, qty, size) => async (dispatch, getState) => {
   try {
@@ -8,7 +12,7 @@ const addToCart = (productId, qty, size) => async (dispatch, getState) => {
     dispatch({
       type: CART_ADD_ITEM,
       payload: {
-        product: data.id,
+        id: data.id,
         name: data.name,
         image: data.image_path,
         price: data.sizes[size - 1].price,
@@ -25,6 +29,19 @@ const addToCart = (productId, qty, size) => async (dispatch, getState) => {
     console.log(error) // eslint-disable-line
   }
 }
+const updateQty = (id, qty, sizeId) => ({ type: UPDATE_CART_ITEM, id, qty, sizeId })
 
-export { addToCart }
+const removeFromCart = (index) => async (dispatch, getState) => {
+  try {
+    dispatch({ type: CART_REMOVE_ITEM, payload: index })
+    const {
+      cart: { cartItems },
+    } = getState()
+    Cookie.set('cartItems', JSON.stringify(cartItems))
+  } catch (error) {
+    console.log(error) // eslint-disable-line
+  }
+}
+
+export { addToCart, updateQty, removeFromCart }
 // eslint-disable-line

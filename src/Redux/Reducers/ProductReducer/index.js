@@ -18,7 +18,7 @@ function productListReducer(
     allDocs: 0,
     search: '',
     currency: 'eur',
-    page: 1,
+    page: 0,
   },
   action,
 ) {
