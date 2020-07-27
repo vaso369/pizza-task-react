@@ -24,7 +24,9 @@ const HomePage = () => {
       className="spiner mx-auto my-auto"
       variant="secondary"
       style={{
-        justifySelf: 'center',
+        position: 'absolute',
+        top: '50%',
+        left: '47%',
       }}
     />
   ) : error ? (

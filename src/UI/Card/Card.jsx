@@ -10,15 +10,17 @@ const CardComponent = ({ products, currency }) => products.map((el) => (
   <CardDeck className="product-card" key={el.name + Math.random()}>
     <Card>
       <div>
-        <Card.Img
-          variant="center"
-          src={el.image_thumb_path}
-          style={{
-            display: 'block',
-          }}
-          width="100%"
-          height="250rem"
-        />
+        <Link to={`/products/${el.id}`} className="m-auto">
+          <Card.Img
+            variant="center"
+            src={el.image_thumb_path}
+            style={{
+              display: 'block',
+            }}
+            width="100%"
+            height="250rem"
+          />
+        </Link>
       </div>
 
       <Card.Body className="product-card--body">
