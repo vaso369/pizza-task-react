@@ -1,0 +1,86 @@
+@import '../../Sass/_colors';
+
+.product-item {
+  padding: 3.4rem 0;
+  .back-to-result a {
+    padding-left: 1rem;
+    color: $colorDarkGray !important;
+  }
+}
+
+.details {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  padding: 1rem;
+  @media screen and (max-width: 600px) {
+    .details-action {
+      margin-bottom: 5rem;
+    }
+  }
+  &-image {
+    flex: 2 1 30rem;
+    margin-right: 1rem;
+    @media screen and (max-width: 600px) {
+      margin-right: 0;
+    }
+  }
+
+  &-image img {
+    max-width: 50rem;
+    width: 100%;
+  }
+
+  &-info {
+    flex: 1 1 30rem;
+  }
+  &-action {
+    flex: 1 1 15rem;
+    margin-left: 1rem;
+    @media screen and (max-width: 600px) {
+      margin-left: 0;
+    }
+  }
+
+  &-info ul,
+  &-action ul {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  &-info li,
+  &-action li {
+    margin-bottom: 1rem;
+  }
+
+  &-action {
+    border: 0.1rem $colorGray solid;
+    border-radius: 0.5rem;
+    background: $colorF8;
+    padding: 1rem;
+  }
+
+  &-action ul li:last-child {
+    display: flex;
+    flex-direction: column;
+  }
+}
+.card-summary {
+  @media screen and (max-width: 600px) {
+    flex-direction: column;
+  }
+  &--responsive {
+    @media screen and (max-width: 600px) {
+      flex-direction: row !important;
+      justify-content: space-evenly;
+      align-items: center;
+
+      p.card-text {
+        margin-bottom: 0;
+        text-align: left;
+        width: 100%;
+      }
+    }
+  }
+}

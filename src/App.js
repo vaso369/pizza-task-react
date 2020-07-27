@@ -5,6 +5,7 @@ import Footer from './Layout/Footer/Footer'
 import Header from './Layout/Header/Header'
 import HomePage from './Pages/HomePage/HomePage'
 import LoginPage from './Pages/LoginPage/LoginPage'
+import ProductPage from './Pages/ProductPage/ProductPage'
 import RegisterPage from './Pages/RegisterPage/RegisterPage'
 
 const App = () => (
@@ -14,6 +15,7 @@ const App = () => (
       <Route exact path="/" component={HomePage} />
       <Route path="/login" component={LoginPage} />
       <Route path="/register" component={RegisterPage} />
+      <Route path="/products/:id" component={ProductPage} />
     </Switch>
     <Footer />
   </>

@@ -1,5 +1,8 @@
 import axios from 'axios'
 import {
+  PRODUCT_DETAILS_FAIL,
+  PRODUCT_DETAILS_REQUEST,
+  PRODUCT_DETAILS_SUCCESS,
   PRODUCT_LIST_FAIL,
   PRODUCT_LIST_REQUEST,
   PRODUCT_LIST_SUCCESS,
@@ -33,6 +36,17 @@ const listProducts = (page = 1, limit = 3, searchKeyword = '', currency = 'eur')
   }
 }
 
+const detailsProduct = (productId) => async (dispatch) => {
+  try {
+    dispatch({ type: PRODUCT_DETAILS_REQUEST, payload: productId })
+    const { data } = await axios.get(`/api/pizzas/${productId}`)
+
+    dispatch({ type: PRODUCT_DETAILS_SUCCESS, payload: data })
+  } catch (error) {
+    dispatch({ type: PRODUCT_DETAILS_FAIL, payload: error.message })
+  }
+}
+
 const setLimit = (value) => ({
   type: PRODUCT_SET_LIMIT,
   payload: value,
@@ -51,5 +65,5 @@ const setSearch = (value) => ({
   payload: value,
 })
 
-export { listProducts, setLimit, setCurrency, setPage, setSearch } // eslint-disable-line
+export { listProducts, setLimit, setCurrency, setPage, setSearch, detailsProduct } // eslint-disable-line
 // eslint-disable-line

@@ -6,7 +6,7 @@ import {
   faSignOutAlt,
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Container, Image, Nav, Navbar } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { HashRouter, Link } from 'react-router-dom'
@@ -17,7 +17,11 @@ import './Header.scss'
 const Header = () => {
   const dispatch = useDispatch()
   const [welcome, setWelcome] = useState('Welcome, ')
+  const [pulse, setPulse] = useState(false)
+
   const userSignin = useSelector((state) => state.userSignIn)
+  const cart = useSelector((state) => state.cart.cartItems)
+
   const { userInfo } = userSignin
   const userFullName = userInfo ? `${userInfo.user.first_name} ${userInfo.user.last_name}` : ''
   const handleLogOut = () => {
@@ -29,7 +33,14 @@ const Header = () => {
       setWelcome('')
     }, 3000)
   }
-
+  useEffect(() => {
+    if (cart.length > 0) {
+      setPulse(true)
+      setTimeout(() => {
+        setPulse(false)
+      }, 2000)
+    }
+  }, [cart])
   return (
     <HashRouter>
       <Navbar bg="dark" variant="dark" expand="lg" className="shadow" sticky="top">
@@ -55,7 +66,8 @@ const Header = () => {
                 <FontAwesomeIcon icon={faBookOpen} /> Menu
               </Link>
               <Link to="/cart" className="nav-link mr-5">
-                <FontAwesomeIcon icon={faShoppingCart} /> Cart( )
+                <FontAwesomeIcon icon={faShoppingCart} className={pulse ? 'anim' : ''} /> Cart(
+                {cart.length})
               </Link>
               {userInfo ? (
                 <>
