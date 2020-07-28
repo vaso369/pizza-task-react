@@ -21,6 +21,7 @@ const Header = () => {
 
   const userSignin = useSelector((state) => state.userSignIn)
   const cart = useSelector((state) => state.cart.cartItems)
+  const ordersCount = useSelector((state) => state.myOrderList.orderCount)
 
   const { userInfo } = userSignin
   const userFullName = userInfo ? `${userInfo.user.first_name} ${userInfo.user.last_name}` : ''
@@ -33,6 +34,7 @@ const Header = () => {
       setWelcome('')
     }, 3000)
   }
+
   useEffect(() => {
     if (cart.length > 0) {
       setPulse(true)
@@ -66,13 +68,15 @@ const Header = () => {
                 <FontAwesomeIcon icon={faBookOpen} /> Menu
               </Link>
               <Link to="/cart" className="nav-link mr-5">
-                <FontAwesomeIcon icon={faShoppingCart} className={pulse ? 'anim' : ''} /> Cart(
-                {cart.length})
+                <FontAwesomeIcon icon={faShoppingCart} className={pulse ? 'anim' : ''} />{' '}
+                Cart(&nbsp;
+                {cart.length}&nbsp;)
               </Link>
               {userInfo ? (
                 <>
                   <Link to="/orders" className="nav-link">
-                    <FontAwesomeIcon icon={faAlignLeft} className="" /> Orders()
+                    <FontAwesomeIcon icon={faAlignLeft} /> Orders(&nbsp;
+                    {ordersCount}&nbsp;)
                   </Link>
                 </>
               ) : null}
