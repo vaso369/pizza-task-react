@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import PropTypes from 'prop-types'
 import React, { useState } from 'react'
 import { Button, Col, Form, Row } from 'react-bootstrap'
+import Alert from 'react-bootstrap/Alert'
 import { useDispatch } from 'react-redux'
 import { saveShipping } from '../../Redux/Actions/CartActions/CartActions'
 import CheckoutSteps from '../../UI/CheckoutSteps/CheckoutSteps'
@@ -12,6 +13,8 @@ import './ShippingPage.scss'
 
 const ShippingPage = (props) => {
   const { history } = props
+  const [errorForm, setErrorForm] = useState(false)
+
   const [state, setState] = useState({
     address: '',
     phone: '',
@@ -39,6 +42,7 @@ const ShippingPage = (props) => {
       return accumulator.filter((el) => el === true)
     }, [])
     if (values[0]) {
+      setErrorForm(true)
     } else {
       dispatch(saveShipping({ address, phone, additional }))
       history.push('payment')
@@ -110,6 +114,11 @@ const ShippingPage = (props) => {
           </Form>
         </Row>
       </div>
+      {errorForm ? (
+        <Alert key={1} variant="danger">
+          You already have this pizza in cart. Maximum quantity per one order is 5!
+        </Alert>
+      ) : null}
     </>
   )
 }

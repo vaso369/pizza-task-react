@@ -11,6 +11,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import PropTypes from 'prop-types'
 import React, { useEffect, useState } from 'react'
 import { Button, Col, Form, Row, Spinner } from 'react-bootstrap'
+import Alert from 'react-bootstrap/Alert'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { register, registerReset } from '../../Redux/Actions/UserActions/UserActions'
@@ -21,6 +22,7 @@ import './RegisterPage.css'
 const RegisterPage = (props) => {
   const { location, history } = props
   const [state, setState] = useState({})
+  const [errorForm, setErrorForm] = useState(false)
   const [passShow, setPassShow] = useState(false)
   const userRegister = useSelector((stateRedux) => stateRedux.userRegister)
   const { loading, registrated, error } = userRegister
@@ -48,7 +50,7 @@ const RegisterPage = (props) => {
       return accumulator.filter((el) => el === true)
     }, [])
     if (values[0]) {
-      //
+      setErrorForm(true)
     } else {
       dispatch(register(state.firstName, state.lastName, state.email, state.password))
     }
@@ -185,6 +187,11 @@ const RegisterPage = (props) => {
           </Form>
         </Row>
       </div>
+      {errorForm ? (
+        <Alert key={1} variant="danger">
+          You already have this pizza in cart. Maximum quantity per one order is 5!
+        </Alert>
+      ) : null}
     </>
   )
 }
