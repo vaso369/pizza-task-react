@@ -3,6 +3,9 @@ import Cookie from 'js-cookie'
 import {
   CART_ADD_ITEM,
   CART_REMOVE_ITEM,
+  CART_RESET,
+  CART_SAVE_PAYMENT,
+  CART_SAVE_SHIPPING,
   UPDATE_CART_ITEM,
 } from '../../ActionTypes/CartTypes/CartTypes'
 
@@ -43,5 +46,13 @@ const removeFromCart = (index) => async (dispatch, getState) => {
   }
 }
 
-export { addToCart, updateQty, removeFromCart }
+const resetCart = () => ({ type: CART_RESET })
+
+const saveShipping = (data) => (dispatch) => {
+  dispatch({ type: CART_SAVE_SHIPPING, payload: data })
+}
+const savePayment = (data) => (dispatch) => {
+  dispatch({ type: CART_SAVE_PAYMENT, payload: data })
+}
+export { addToCart, updateQty, removeFromCart, resetCart, saveShipping, savePayment }
 // eslint-disable-line

@@ -1,6 +1,9 @@
 import {
   CART_ADD_ITEM,
   CART_REMOVE_ITEM,
+  CART_RESET,
+  CART_SAVE_PAYMENT,
+  CART_SAVE_SHIPPING,
   UPDATE_CART_ITEM,
 } from '../../ActionTypes/CartTypes/CartTypes'
 
@@ -54,6 +57,16 @@ function cartReducer(state = { cartItems: [], shipping: {}, payment: {} }, actio
       return {
         cartItems: state.cartItems.filter((x, index) => index !== action.payload), // eslint-disable-line
       }
+    case CART_RESET:
+      return {
+        cartItems: [],
+        shipping: { address: '', phone: '', additional: '' },
+        payment: { paymentMethod: '' },
+      }
+    case CART_SAVE_SHIPPING:
+      return { ...state, shipping: action.payload }
+    case CART_SAVE_PAYMENT:
+      return { ...state, payment: action.payload }
     default:
       return state
   }

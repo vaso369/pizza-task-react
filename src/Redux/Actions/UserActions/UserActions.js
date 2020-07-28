@@ -10,6 +10,7 @@ import {
   USER_SIGNIN_REQUEST,
   USER_SIGNIN_SUCCESS,
 } from '../../ActionTypes/UserTypes/UserTypes'
+import { listMyOrders } from '../OrderActions/OrderActions'
 
 const signin = (email, password) => async (dispatch) => {
   dispatch({ type: USER_SIGNIN_REQUEST, payload: { email, password } })
@@ -17,6 +18,7 @@ const signin = (email, password) => async (dispatch) => {
     const { data } = await axios.post('/api/login', { email, password })
     dispatch({ type: USER_SIGNIN_SUCCESS, payload: data })
     Cookie.set('userInfo', JSON.stringify(data))
+    dispatch(listMyOrders())
   } catch (error) {
     dispatch({ type: USER_SIGNIN_FAIL, payload: 'Invalid credentials!' })
   }
