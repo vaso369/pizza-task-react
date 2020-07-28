@@ -14,7 +14,6 @@ import {
 import { resetCart } from '../CartActions/CartActions'
 
 const createOrder = (order) => async (dispatch, getState) => {
-  console.log('uso')
   try {
     dispatch({ type: ORDER_CREATE_REQUEST, payload: order })
     const {
@@ -28,7 +27,7 @@ const createOrder = (order) => async (dispatch, getState) => {
       },
     })
     dispatch({ type: ORDER_CREATE_SUCCESS, payload: newOrder })
-    dispatch(listMyOrders())
+    dispatch(listMyOrders()) // eslint-disable-line
     Cookie.remove('cartItems')
     dispatch(resetCart())
   } catch (error) {
@@ -59,5 +58,5 @@ const getPriceByCurrency = (price, currency) => async (dispatch) => {
     dispatch({ type: PRICE_CURRENCY_FAIL, payload: error.message })
   }
 }
-
+// eslint-disable-line
 export { createOrder, listMyOrders, getPriceByCurrency }

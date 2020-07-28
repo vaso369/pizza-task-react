@@ -121,11 +121,7 @@ const PlaceOrderPage = (props) => {
             <li>
               <div>Order Total</div>
               <div>
-                {price !== 0
-                  ? currency === 'eur'
-                    ? itemsPrice + shippingPrice
-                    : price
-                  : itemsPrice + shippingPrice}{' '}
+                {price !== 0 ? (currency === 'eur' ? totalPrice : price) : totalPrice}{' '}
                 <FontAwesomeIcon
                   icon={
                     currency === '' ? faEuroSign : currency === 'usd' ? faDollarSign : faEuroSign
@@ -138,13 +134,7 @@ const PlaceOrderPage = (props) => {
               <div>
                 <Currency
                   dispatch={getPriceByCurrency}
-                  price={
-                    price !== 0
-                      ? currency === 'eur'
-                        ? itemsPrice + shippingPrice
-                        : price
-                      : itemsPrice + shippingPrice
-                  }
+                  price={price !== 0 ? (currency === 'eur' ? totalPrice : price) : totalPrice}
                 />
               </div>
             </li>

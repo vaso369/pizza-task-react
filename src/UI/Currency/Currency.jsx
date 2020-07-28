@@ -9,7 +9,7 @@ export const Currency = (props) => {
   const { page, perPage, search, currency } = props
   const dispatch = useDispatch()
   const [localCurrency, setLocalCurrency] = useState('eur')
-  const isLocal = props.dispatch.name === 'getPriceByCurrency'
+  const isLocal = props.dispatch.name === 'getPriceByCurrency' // eslint-disable-line
   const getByCurrency = (e) => {
     if (isLocal) {
       dispatch(props.dispatch(props.price, e))
@@ -41,4 +41,5 @@ Currency.propTypes = {
   currency: PropTypes.string.isRequired,
   page: PropTypes.string.isRequired,
   dispatch: PropTypes.func.isRequired,
+  price: PropTypes.number.isRequired,
 }
