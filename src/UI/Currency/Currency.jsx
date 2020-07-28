@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import React from 'react'
+import React, { useState } from 'react'
 import { Form } from 'react-bootstrap'
 import { useDispatch } from 'react-redux'
 import { setCurrency } from '../../Redux/Actions/ProductActions/ProductActions'
@@ -8,10 +8,16 @@ import './Currency.scss'
 export const Currency = (props) => {
   const { page, perPage, search, currency } = props
   const dispatch = useDispatch()
-
+  const [localCurrency, setLocalCurrency] = useState('eur')
+  const isLocal = props.dispatch.name === 'getPriceByCurrency'
   const getByCurrency = (e) => {
-    dispatch(props.dispatch(Number(page), perPage, search, e))
-    dispatch(setCurrency(e))
+    if (isLocal) {
+      dispatch(props.dispatch(props.price, e))
+      setLocalCurrency(e)
+    } else {
+      dispatch(props.dispatch(Number(page), perPage, search, e))
+      dispatch(setCurrency(e))
+    }
   }
 
   return (
@@ -20,7 +26,7 @@ export const Currency = (props) => {
       <Form.Control
         as="select"
         className="selectList"
-        value={currency}
+        value={isLocal ? localCurrency : currency}
         onChange={(e) => getByCurrency(e.target.value)}
       >
         <option value="eur">EUR</option>
