@@ -7,7 +7,12 @@
   flex-wrap: wrap;
   align-items: flex-start;
   margin: 1rem;
-
+  @media screen and (max-width: 320px) {
+    margin: 0;
+  }
+  @media screen and (max-width: 600px) {
+    margin-bottom: 5rem;
+  }
   &-list {
     flex: 3 1 60rem;
   }
@@ -39,7 +44,8 @@
       max-height: 10rem;
       margin-bottom: 1rem;
       @media screen and (max-width: 600px) {
-        width: 100% !important;
+        max-width: 100% !important;
+        width: 100%;
       }
     }
   }
@@ -48,9 +54,6 @@
     padding: 1rem;
     border-bottom: 0.1rem $colorGray solid;
     @include flex('space-between', 'center');
-    // display: flex;
-    // justify-content: space-between;
-    // align-items: center;
     @media screen and (max-width: 600px) {
       flex-direction: column !important;
     }
@@ -82,7 +85,7 @@
     }
   }
 
-  &-price {
+  &-price-big {
     flex: 1 1;
     text-align: right;
     font-size: 1.5rem;

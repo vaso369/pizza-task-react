@@ -19,6 +19,7 @@
     "react/jsx-one-expression-per-line": "off",
     "no-nested-ternary": "off",
     "no-plusplus": "off",
+    "jsx-a11y/label-has-associated-control": "off",
     "no-restricted-syntax": [
       "error",
       "ForInStatement",

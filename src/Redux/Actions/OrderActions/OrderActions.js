@@ -10,6 +10,7 @@ import {
   PRICE_CURRENCY_FAIL,
   PRICE_CURRENCY_REQUEST,
   PRICE_CURRENCY_SUCCESS,
+  PRICE_TO_ZERO,
 } from '../../ActionTypes/OrderTypes/OrderTypes'
 import { resetCart } from '../CartActions/CartActions'
 
@@ -28,6 +29,7 @@ const createOrder = (order) => async (dispatch, getState) => {
     })
     dispatch({ type: ORDER_CREATE_SUCCESS, payload: newOrder })
     dispatch(listMyOrders()) // eslint-disable-line
+    dispatch(setPriceToZero()) // eslint-disable-line
     Cookie.remove('cartItems')
     dispatch(resetCart())
   } catch (error) {
@@ -48,14 +50,16 @@ const listMyOrders = () => async (dispatch, getState) => {
       },
     )
     dispatch({ type: MY_ORDER_LIST_SUCCESS, payload: data })
+    const {
+      myOrderList: { orders },
+    } = getState()
+    Cookie.set('orders', JSON.stringify(orders))
   } catch (error) {
     dispatch({ type: MY_ORDER_LIST_FAIL, payload: error.message })
   }
 }
 const getPriceByCurrency = (price, currency) => async (dispatch) => {
   try {
-    console.log('getPriceByCurrency -> currency', currency) // eslint-disable-line
-    console.log('getPriceByCurrency -> price', price) // eslint-disable-line
     dispatch({ type: PRICE_CURRENCY_REQUEST, price, currency })
     const { data } = await axios.get(
       `https://pizza-task-backend.herokuapp.com/api/convert?price=${price}&currency=${currency}`,
@@ -65,6 +69,8 @@ const getPriceByCurrency = (price, currency) => async (dispatch) => {
     dispatch({ type: PRICE_CURRENCY_FAIL, payload: error.message })
   }
 }
+const setPriceToZero = () => ({ type: PRICE_TO_ZERO })
+
 // eslint-disable-line
-export { createOrder, listMyOrders, getPriceByCurrency }
+export { createOrder, listMyOrders, getPriceByCurrency, setPriceToZero }
 // eslint-disable-line

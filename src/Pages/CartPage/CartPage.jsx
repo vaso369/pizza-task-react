@@ -56,7 +56,7 @@ const CartPage = (props) => {
           ) : (
             cartItems.map((item, index) => (
               <div className="cart-item-container" key={item.price}>
-                <div className="cart-image">
+                <div className="cart-image-cart">
                   <img src={item.image} alt="product" />
                 </div>
                 <div className="cart-name d-flex align-items-center justify-content-around">
@@ -94,7 +94,7 @@ const CartPage = (props) => {
                     <FontAwesomeIcon className="mr-2" icon={faTrash} /> Delete
                   </Button>
                 </div>
-                <div className="cart-price d-flex align-items-center">
+                <div className="cart-price-big d-flex align-items-center">
                   <FontAwesomeIcon icon={faEuroSign} className="text-dark ml-2" /> &nbsp;
                   {item.price}
                 </div>

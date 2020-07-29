@@ -8,6 +8,7 @@ import {
   PRICE_CURRENCY_FAIL,
   PRICE_CURRENCY_REQUEST,
   PRICE_CURRENCY_SUCCESS,
+  PRICE_TO_ZERO,
 } from '../../ActionTypes/OrderTypes/OrderTypes'
 
 function orderCreateReducer(state = {}, action) {
@@ -55,9 +56,12 @@ function priceConverterReducer(
       return { loading: false, price: action.price, currency: action.currency }
     case PRICE_CURRENCY_FAIL:
       return { loading: false, error: action.payload }
+    case PRICE_TO_ZERO:
+      return { price: 0, currency: '' }
     default:
       return state
   }
 }
-// eslint-disable-line
-export { orderCreateReducer, myOrderListReducer, priceConverterReducer }
+
+export { orderCreateReducer, myOrderListReducer, priceConverterReducer } // eslint-disable-line
+// eslint-disable-next-line

@@ -16,6 +16,7 @@ export default function Pagination(props) {
     dispatch(props.dispatch(e.target.value, perPage, search, currency))
     dispatch(setPage(e.target.value))
     setActive(Number(e.target.value))
+    window.scrollTo(0, 0)
   }
 
   useEffect(() => {

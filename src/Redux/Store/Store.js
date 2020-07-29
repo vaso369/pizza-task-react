@@ -12,10 +12,11 @@ import { userRegisterReducer, userSigninReducer } from '../Reducers/UserReducer'
 
 const userInfo = Cookie.getJSON('userInfo') || null
 const cartItems = Cookie.getJSON('cartItems') || []
+const orders = Cookie.getJSON('orders') || []
 
 const initialState = {
   cart: { cartItems, shipping: {}, payment: {} },
-
+  myOrderList: { orders },
   userSignIn: { userInfo },
 }
 
