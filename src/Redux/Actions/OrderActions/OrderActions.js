@@ -21,7 +21,7 @@ const createOrder = (order) => async (dispatch, getState) => {
     } = getState()
     const {
       data: { data: newOrder },
-    } = await axios.post('http://pizza-task-back.herokuapp.com/api/order', order, {
+    } = await axios.post('https://pizza-task-back.herokuapp.com/api/order', order, {
       headers: {
         Authorization: ` Bearer ${userInfo.token}`,
       },
@@ -41,7 +41,7 @@ const listMyOrders = () => async (dispatch, getState) => {
     const {
       userSignIn: { userInfo },
     } = getState()
-    const { data } = await axios.get('http://pizza-task-back.herokuapp.com/api/order', {
+    const { data } = await axios.get('https://pizza-task-back.herokuapp.com/api/order', {
       headers: { Authorization: `Bearer ${userInfo.token}` },
     })
     dispatch({ type: MY_ORDER_LIST_SUCCESS, payload: data })
@@ -53,7 +53,7 @@ const getPriceByCurrency = (price, currency) => async (dispatch) => {
   try {
     dispatch({ type: PRICE_CURRENCY_REQUEST, price, currency })
     const { data } = await axios.get(
-      `http://pizza-task-back.herokuapp.com/api/convert?price=${price}&currency=${currency}`,
+      `https://pizza-task-back.herokuapp.com/api/convert?price=${price}&currency=${currency}`,
     )
     dispatch({ type: PRICE_CURRENCY_SUCCESS, price: data.price, currency: data.currency })
   } catch (error) {
