@@ -137,6 +137,7 @@ const PlaceOrderPage = (props) => {
                 <Currency
                   dispatch={getPriceByCurrency}
                   price={price !== 0 ? (currency === 'eur' ? totalPrice : price) : totalPrice}
+                  dispatchName="getPriceByCurrency"
                 />
               </div>
             </li>
