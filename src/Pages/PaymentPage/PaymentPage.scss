@@ -48,3 +48,10 @@
 .borderRed {
   border: 1px solid red !important;
 }
+.radios {
+  @media screen and (max-width: 600px) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}

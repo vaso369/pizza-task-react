@@ -2,6 +2,9 @@
 
 .product-item {
   padding: 3.4rem 0;
+  @media screen and (max-width: 600px) {
+    padding: 1.4rem 0;
+  }
   .back-to-result a {
     padding-left: 1rem;
     color: $colorDarkGray !important;
@@ -34,6 +37,9 @@
 
   &-info {
     flex: 1 1 30rem;
+    @media screen and (max-width: 600px) {
+      margin-top: 2rem;
+    }
   }
   &-action {
     flex: 1 1 15rem;

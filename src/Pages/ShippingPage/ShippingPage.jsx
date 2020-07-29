@@ -51,9 +51,9 @@ const ShippingPage = (props) => {
   return (
     <>
       <div className="register">
-        <div>
+        <>
           <CheckoutSteps step1 step2 />
-        </div>
+        </>
         <Row className="register-form">
           <h2 className="register-form register-form--title bg-dark">
             <b>
