@@ -51,6 +51,8 @@ const listMyOrders = () => async (dispatch, getState) => {
 }
 const getPriceByCurrency = (price, currency) => async (dispatch) => {
   try {
+    console.log('getPriceByCurrency -> currency', currency) // eslint-disable-line
+    console.log('getPriceByCurrency -> price', price) // eslint-disable-line
     dispatch({ type: PRICE_CURRENCY_REQUEST, price, currency })
     const { data } = await axios.get(
       `https://pizza-task-backend.herokuapp.com/api/convert?price=${price}&currency=${currency}`,
