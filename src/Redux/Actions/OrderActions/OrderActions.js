@@ -41,9 +41,12 @@ const listMyOrders = () => async (dispatch, getState) => {
     const {
       userSignIn: { userInfo },
     } = getState()
-    const { data } = await axios.get('https://pizza-task-backend.herokuapp.com/api/order', {
-      headers: { Authorization: `Bearer ${userInfo.token}` },
-    })
+    const { data } = await axios.get(
+      `https://pizza-task-backend.herokuapp.com/api/order?userId=${userInfo.user.id}`,
+      {
+        headers: { Authorization: `Bearer ${userInfo.token}` },
+      },
+    )
     dispatch({ type: MY_ORDER_LIST_SUCCESS, payload: data })
   } catch (error) {
     dispatch({ type: MY_ORDER_LIST_FAIL, payload: error.message })

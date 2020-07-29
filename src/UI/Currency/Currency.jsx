@@ -9,9 +9,8 @@ export const Currency = (props) => {
   const { page, perPage, search, currency } = props
   const dispatch = useDispatch()
   const [localCurrency, setLocalCurrency] = useState('eur')
-  const isLocal = props.dispatch.name === 'getPriceByCurrency' // eslint-disable-line
   const getByCurrency = (e) => {
-    if (isLocal) {
+    if (props.dispatch.name === 'getPriceByCurrency') {
       console.log(props.price, e) // eslint-disable-line
       dispatch(props.dispatch(props.price, e))
       setLocalCurrency(e)
@@ -27,7 +26,7 @@ export const Currency = (props) => {
       <Form.Control
         as="select"
         className="selectList"
-        value={isLocal ? localCurrency : currency}
+        value={props.dispatch.name === 'getPriceByCurrency' ? localCurrency : currency}
         onChange={(e) => getByCurrency(e.target.value)}
       >
         <option value="eur">EUR</option>
