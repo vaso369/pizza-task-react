@@ -12,7 +12,7 @@ import {
 const addToCart = (productId, qty, size) => async (dispatch, getState) => {
   try {
     const { data } = await axios.get(
-      `https://pizza-task-back.herokuapp.com/api/pizzas/${productId}`,
+      `https://pizza-task-backend.herokuapp.com/api/pizza/${productId}`,
     )
     dispatch({
       type: CART_ADD_ITEM,

@@ -20,7 +20,7 @@ const listProducts = (page = 1, limit = 3, searchKeyword = '', currency = 'eur')
       type: PRODUCT_LIST_REQUEST,
     })
     const { data } = await axios.get(
-      `https://pizza-task-back.herokuapp.com/api/pizzas?name=${searchKeyword}&page=${page}&per_page=${limit}&currency=${currency}`,
+      `https://pizza-task-backend.herokuapp.com/api/pizza?name=${searchKeyword}&page=${page}&per_page=${limit}&currency=${currency}`,
     )
     dispatch({
       type: PRODUCT_LIST_SUCCESS,
@@ -40,7 +40,7 @@ const detailsProduct = (productId) => async (dispatch) => {
   try {
     dispatch({ type: PRODUCT_DETAILS_REQUEST, payload: productId })
     const { data } = await axios.get(
-      `https://pizza-task-back.herokuapp.com/api/pizzas/${productId}`,
+      `https://pizza-task-backend.herokuapp.com/api/pizza/${productId}`,
     )
 
     dispatch({ type: PRODUCT_DETAILS_SUCCESS, payload: data })
