@@ -15,7 +15,10 @@ import { listMyOrders } from '../OrderActions/OrderActions'
 const signin = (email, password) => async (dispatch) => {
   dispatch({ type: USER_SIGNIN_REQUEST, payload: { email, password } })
   try {
-    const { data } = await axios.post('/api/login', { email, password })
+    const { data } = await axios.post('http://pizza-task-back.herokuapp.com/api/login', {
+      email,
+      password,
+    })
     dispatch({ type: USER_SIGNIN_SUCCESS, payload: data })
     Cookie.set('userInfo', JSON.stringify(data))
     dispatch(listMyOrders())
@@ -30,7 +33,7 @@ const register = (firstName, lastName, email, password) => async (dispatch) => {
     payload: { firstName, lastName, email, password },
   })
   try {
-    await axios.post('/api/user', {
+    await axios.post('http://pizza-task-back.herokuapp.com/api/user', {
       firstName,
       lastName,
       email,
