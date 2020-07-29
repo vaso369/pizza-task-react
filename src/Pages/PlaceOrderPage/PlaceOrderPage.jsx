@@ -15,7 +15,7 @@ const PlaceOrderPage = (props) => {
   const cart = useSelector((state) => state.cart)
   const { cartItems, shipping, payment } = cart
   const convert = useSelector((state) => state.priceConverter)
-  const userId = useSelector((state) => state.userSignIn.user.id)
+  const userId = useSelector((state) => state.userSignIn.userInfo.user.id)
   const { price, currency } = convert
   if (!shipping.address) {
     history.push('/shipping')
