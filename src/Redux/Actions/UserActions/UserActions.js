@@ -15,7 +15,7 @@ import { listMyOrders } from '../OrderActions/OrderActions'
 const signin = (email, password) => async (dispatch) => {
   dispatch({ type: USER_SIGNIN_REQUEST, payload: { email, password } })
   try {
-    const { data } = await axios.post('http://pizza-task-back.herokuapp.com/api/login', {
+    const { data } = await axios.post('https://pizza-task-back.herokuapp.com/api/login', {
       email,
       password,
     })
@@ -33,7 +33,7 @@ const register = (firstName, lastName, email, password) => async (dispatch) => {
     payload: { firstName, lastName, email, password },
   })
   try {
-    await axios.post('http://pizza-task-back.herokuapp.com/api/user', {
+    await axios.post('https://pizza-task-back.herokuapp.com/api/user', {
       firstName,
       lastName,
       email,
