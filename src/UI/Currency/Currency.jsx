@@ -10,7 +10,7 @@ export const Currency = (props) => {
   const dispatch = useDispatch()
   const [localCurrency, setLocalCurrency] = useState('eur')
   const getByCurrency = (e) => {
-    if (props.dispatch.name === 'getPriceByCurrency') {
+    if (props.dispatchName === 'getPriceByCurrency') {
       console.log(props.price, e) // eslint-disable-line
       dispatch(props.dispatch(props.price, e))
       setLocalCurrency(e)
