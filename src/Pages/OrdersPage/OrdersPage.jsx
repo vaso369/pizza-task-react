@@ -1,17 +1,15 @@
 import React from 'react'
 import { Spinner, Table } from 'react-bootstrap'
 import { useSelector } from 'react-redux'
+import './OrdersPage.scss'
 
 function OrdersPage() {
-  // const dispatch = useDispatch()
   const ordersList = useSelector((state) => state.myOrderList)
   const { orders, loading, error } = ordersList
 
-  // useEffect(() => dispatch(listMyOrders()), [])
-
   return (
     <div className="content content-margined">
-      <div className="order-header">
+      <div className="order-header mt-2">
         <h3>Orders</h3>
       </div>
       <div className="order-list">

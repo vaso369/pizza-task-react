@@ -6,12 +6,14 @@ import Header from './Layout/Header/Header'
 import CartPage from './Pages/CartPage/CartPage'
 import HomePage from './Pages/HomePage/HomePage'
 import LoginPage from './Pages/LoginPage/LoginPage'
+import NotFoundPage from './Pages/NotFoundPage/NotFoundPage'
 import OrdersPage from './Pages/OrdersPage/OrdersPage'
 import PaymentPage from './Pages/PaymentPage/PaymentPage'
 import PlaceOrderPage from './Pages/PlaceOrderPage/PlaceOrderPage'
 import ProductPage from './Pages/ProductPage/ProductPage'
 import RegisterPage from './Pages/RegisterPage/RegisterPage'
 import ShippingPage from './Pages/ShippingPage/ShippingPage'
+import PrivateRoute from './Routes/PrivateRoute' // eslint-disable-line
 
 const App = () => (
   <>
@@ -22,10 +24,11 @@ const App = () => (
       <Route path="/register" component={RegisterPage} />
       <Route path="/products/:id" component={ProductPage} />
       <Route path="/cart" component={CartPage} />
-      <Route path="/shipping" component={ShippingPage} />
-      <Route path="/payment" component={PaymentPage} />
-      <Route path="/placeorder" component={PlaceOrderPage} />
-      <Route path="/orders" component={OrdersPage} />
+      <PrivateRoute path="/shipping" component={ShippingPage} />
+      <PrivateRoute path="/payment" component={PaymentPage} />
+      <PrivateRoute path="/placeorder" component={PlaceOrderPage} />
+      <PrivateRoute path="/orders" component={OrdersPage} />
+      <Route component={NotFoundPage} />
     </Switch>
     <Footer />
   </>

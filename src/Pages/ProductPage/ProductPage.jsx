@@ -27,6 +27,7 @@ const ProductPage = (props) => {
   const [price, setPrice] = useState(0)
   const [size, setSize] = useState(1)
   const [quantityError, setQuantityError] = useState(false)
+  const [successAdd, setSuccessAdd] = useState(false)
 
   const [quantity, setQuantity] = useState(1)
   const dispatch = useDispatch()
@@ -49,9 +50,17 @@ const ProductPage = (props) => {
         }, 4000)
       } else {
         dispatch(addToCart(id, quantity, size))
+        setSuccessAdd(true)
+        setTimeout(() => {
+          setSuccessAdd(false)
+        }, 4000)
       }
     } else {
       dispatch(addToCart(id, quantity, size))
+      setSuccessAdd(true)
+      setTimeout(() => {
+        setSuccessAdd(false)
+      }, 4000)
     }
   }
   const optionsQuantity = () => {
@@ -164,17 +173,21 @@ const ProductPage = (props) => {
               <Button variant="warning" onClick={() => handleAddToCart(product.id)}>
                 <FontAwesomeIcon className="mr-2" icon={faShoppingCart} /> Add to cart
               </Button>
+              {successAdd ? (
+                <Alert key={1} variant="success" className="mt-2">
+                  Successfully added! Go to <Link to="/cart">cart</Link>
+                </Alert>
+              ) : null}
+              {quantityError ? (
+                <Alert key={1} variant="danger" className="mt-2">
+                  You already have this pizza in cart. Maximum quantity per one order is 5!
+                </Alert>
+              ) : null}
             </div>
           </div>
         </>
       )}
       {/* </Container> */}
-
-      {quantityError ? (
-        <Alert key={1} variant="danger">
-          You already have this pizza in cart. Maximum quantity per one order is 5!
-        </Alert>
-      ) : null}
     </div>
   )
 }

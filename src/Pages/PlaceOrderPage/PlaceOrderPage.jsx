@@ -90,9 +90,15 @@ const PlaceOrderPage = (props) => {
                     </div>
                     <div className="cart-name">
                       <div>{item.name}</div>
+                      <div>{item.size}</div>
                       <div>Quantity: {item.qty}</div>
                     </div>
-                    <div className="cart-price">${item.price}</div>
+                    <div className="cart-price">
+                      {' '}
+                      <FontAwesomeIcon icon={faEuroSign} />
+                      &nbsp;
+                      {item.price}
+                    </div>
                   </li>
                 ))
               )}

@@ -1,3 +1,8 @@
+.product-card {
+  @media screen and (max-width: 600px) {
+    padding: 1rem !important;
+  }
+}
 .card-summary {
   @media screen and (max-width: 600px) {
     flex-direction: column;

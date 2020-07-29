@@ -21,9 +21,9 @@ const PaymentPage = (props) => {
   return (
     <>
       <div className="register">
-        <div>
+        <>
           <CheckoutSteps step1 step2 step3 />
-        </div>
+        </>
         <Row className="register-form">
           <h2 className="register-form register-form--title">
             <b>
@@ -33,7 +33,7 @@ const PaymentPage = (props) => {
           <Form className="p-4 ">
             <Form.Group controlId="formBasicAddress">
               <Row className="w-100 d-flex justify-content-center text-center">
-                <Col xs={10} lg={5}>
+                <Col xs={10} lg={5} className="radios">
                   <label htmlFor="radio" className="mr-4">
                     Credit Card
                   </label>
@@ -45,7 +45,7 @@ const PaymentPage = (props) => {
                     value="Card"
                   />
                 </Col>
-                <Col xs={10} lg={5}>
+                <Col xs={10} lg={5} className="radios">
                   <label htmlFor="radio" className="mr-4">
                     Cash
                   </label>

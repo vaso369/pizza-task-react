@@ -17,7 +17,7 @@ import { Link } from 'react-router-dom'
 import { register, registerReset } from '../../Redux/Actions/UserActions/UserActions'
 import ReusableInput from '../../UI/ReusableInput/ReusableInput'
 import { email, firstName, lastName, pass } from './RegisterInputObjects'
-import './RegisterPage.css'
+import './RegisterPage.scss'
 
 const RegisterPage = (props) => {
   const { location, history } = props
